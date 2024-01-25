@@ -3,14 +3,11 @@
 */
 
 function area(l1, l2) {
-  // Calcola l'area del rettangolo: lunghezza1 * lunghezza2
   let rectangleArea = l1 * l2;
 
-  // Restituisci l'area calcolata
   return rectangleArea;
 }
 
-// richiamo il nome della funzione e gli passo dei valori
 console.log(area(5, 4));
 
 /* ESERCIZIO 2
@@ -20,12 +17,9 @@ console.log(area(5, 4));
 
 */
 function crazySum(numero1, numero2) {
-  // Verifico se i due numeri sono uguali
   if (numero1 === numero2) {
-    // Se sono uguali, torna la loro somma moltiplicata per tre
     return (numero1 + numero2) * 3;
   } else {
-    // Altrimenti, restituisce solo la somma dei due numeri
     return numero1 + numero2;
   }
 }
@@ -45,16 +39,12 @@ console.log("Il risultato 2 è:", risultato2);
 */
 
 function crazyDiff(numero) {
-  // Calcolo la differenza assoluta tra il numero e 19
   let differenzaAssoluta = Math.abs(numero - 19);
 
-  // Controllo se il numero fornito è maggiore di 19
   if (numero > 19) {
-    // Se sì, moltiplica la differenza assoluta per tre
     differenzaAssoluta *= 3;
   }
 
-  // Restituisce il risultato
   return differenzaAssoluta;
 }
 
@@ -84,17 +74,13 @@ console.log(boundary(400)); //true
 */
 
 function epify(stringa) {
-  // Verifica se la stringa inizia già con "EPICODE"
   if (stringa.startsWith("EPICODE")) {
-    // Se sì, ritorna la stringa originale
     return stringa;
   } else {
-    // Altrimenti, aggiungi "EPICODE" all'inizio e ritorna la nuova stringa
     return "EPICODE" + stringa;
   }
 }
 
-// Esempi
 console.log(epify("Ciao")); // Restituirà "EPICODECiao"
 console.log(epify("EPICODESchool")); // Restituirà "EPICODESchool"
 
@@ -104,7 +90,6 @@ console.log(epify("EPICODESchool")); // Restituirà "EPICODESchool"
 */
 
 function check3and7(numero) {
-  // Verifica cheil numero sia positivo e poi anche che sia un multiplo di 3 o di 7
   return numero > 0 && (numero % 3 === 0 || numero % 7 === 0);
 }
 
@@ -133,11 +118,62 @@ console.log(result); // Restituirà "EDOCIPE"
  La funzione deve rendere maiuscola la prima lettera di ogni parola contenuta nella stringa.
 */
 
+console.log("ESERCIZIO 8");
+
+function upperFirst(stringa) {
+  console.log(stringa);
+  let parole = stringa.split(" ");
+  // la funzione split va a dividere una stringa in tanti elementi da mettere dentro all'array.Per dirgli come farlo gli dico che deve usare uno spazio
+  // ottenendo tipo ["ciao", "bel", "mondo"] che è un array
+
+  // devo ciclare su ogni elemento dell'array parole
+  for (let i = 0; i <= parole.length - 1; i++) {
+    parole[i] = parole[i].charAt(0).toUpperCase() + parole[i].slice(1);
+    // con charAt(0)gli diciamo di prendere la prima lettera dell'iesimo elemento dell'array.
+    // poi con toUpperCase() mettiamo le lettere maiuscole + slice(con cui gli diciamo di prendere dal 1 quindi esclude ciao dalla trasformazione in maiuscole)
+  }
+
+  return parole.join(" ");
+  // ora che il mio array ha tutti gli elementi con la  prima lettera maiuscola posso far diventare l'array di nuovo una stringa con
+  // la funzione join concatendando le parole con uno spazio vuoto.
+}
+
+// esempio
+let risu = upperFirst("ciao bel mondo");
+console.log(risu);
+
 /* ESERCIZIO 9
  Scrivi una funzione di nome "cutString", che riceve come parametro una stringa. La funzione deve creare una nuova stringa senza il primo e l'ultimo carattere
  della stringa originale.
 */
 
+function cutString(stringa2) {
+  return stringa2.slice(1, -1);
+  // gli dico di partire dalla e di hello e fermarsi alla l di world
+}
+
+let risultatoOttenuto = cutString("Hello World");
+console.log(risultatoOttenuto); // Output: "ello Worl"
+
 /* ESERCIZIO 10
  Scrivi una funzione di nome "giveMeRandom", che accetta come parametro un numero n e ritorna un'array contenente n numeri casuali inclusi tra 0 e 10.
 */
+function giveMeRandom(n) {
+  // inizio array vuoto
+  let lista = [];
+  // faccio un ciclo for lungo n in quanto nell'array ci voglio pushare per n volte un numero casuale
+  for (let i = 0; i <= n; i++) {
+    let numeri = Math.floor(Math.random() * 11);
+
+    // usiamo Math.floor perché arrotonda il numero
+    // usiamo  Math.random che ci restituisce un numero casuale tra 0 e 1 escluso.
+    // Moltiplicando il risultato ottenuto da Math.random() per 11, otteniamo un numero casuale compreso tra 0 (incluso) e 11 (escluso).
+    // Quindi, nel complesso, l'espressione Math.floor(Math.random() * 11) genera un numero intero casuale compreso tra 0 e 10.
+    lista.push(numeri);
+  }
+  return lista;
+}
+
+// Esempio
+let r = giveMeRandom(5);
+console.log(r);
